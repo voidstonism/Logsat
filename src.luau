@@ -77,16 +77,11 @@ local function DebugPrint(msg)
 	if DEBUG then print(msg) end
 end
 
-local function PadZero(n)
-	return n < 10 and "0" or ""
-end
-
 local function FormatTime(seconds)
 	local sec = seconds % 60
 	local min = math.floor((seconds // 60) % 60)
 	local hr = math.floor(seconds // 3600)
-
-	return `{PadZero(hr)}{hr}:{PadZero(min)}{min}:{PadZero(sec)}{sec}`
+	return string.format("%02d:%02d:%02d", hr,min,sec)
 end
 
 local function GetPlayers()
